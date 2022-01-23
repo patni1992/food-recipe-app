@@ -8,10 +8,10 @@ create table recipe (id SERIAL PRIMARY KEY,
 	created_at timestamp NOT NULL DEFAULT NOW());
 
 create table ingredient (id SERIAL PRIMARY KEY, 
-	name VARCHAR(50) UNIQUE); 
+	name VARCHAR(100) UNIQUE); 
 
 create table measure (id SERIAL PRIMARY KEY, 
-	name VARCHAR(30) UNIQUE); 
+	name VARCHAR(100) UNIQUE); 
 
 create table recipe_ingredient (recipe_id INT NOT NULL, 
 	ingredient_id INT NOT NULL, 
