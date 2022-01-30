@@ -1,0 +1,29 @@
+<div class="container space-top">
+    <div class="row">
+        <form method="get" class="col s12">
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <i class="material-icons prefix">search</i>
+                    <input autofocus value="{{search}}" id="icon_prefix" name="search" type="text" class="validate">
+                    <label for="icon_prefix">Search</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        {{#each recipes}}
+            <div class="col l4 s12">
+                <div class="card">
+                    <a href="/recipes/{{this.id}}">
+                        <div class="card-image recipe-card" style="background-image:url(images/{{this.image}});">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{this.name}}</span>
+                            <p>{{this.description}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
