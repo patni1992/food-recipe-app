@@ -19,6 +19,11 @@ app.get('/', async (req, res) => {
   res.render('home', { recipes, search });
 });
 
+app.get('/recipes/:id', async (req, res) => {
+  const recipe = await queries.getOneRecipe(req.params.id);
+  res.render('recipe', { recipe });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -1,0 +1,42 @@
+<div class="container space-top">
+    <div class="row">
+        <div class="col sm12 l10 offset-l1">
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/{{recipe.image}}">
+                    <h1 class="card-title">{{recipe.name}}</h1>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">{{this.name}}</span>
+                    <div class="description-container">
+                        <form method="POST" action="/recipes/{{recipe.id}}?_method=DELETE">
+                            <a style="color: white;" class="btn waves-effect waves-light"
+                                href="/recipes/{{recipe.id}}/edit" name="action">Edit
+                                <i class="material-icons right">edit</i>
+                            </a>
+                            <button class="btn waves-effect waves-light red" type="submit" name="action">Delete
+                                <i class="material-icons right">delete</i>
+                            </button>
+                        </form>
+                        <p> {{recipe.description}}</p>
+                    </div>
+                    <h5>Ingredients</h5>
+                    <ul>
+                        {{#each recipe.ingredients}}
+                        <li style="display: flex; ">
+                            {{this.amount }} {{ this.measure.name}} {{this.ingredient}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <hr />
+                    <h5>Instructions</h5>
+                    <ul>
+                        <div class="instructions">
+                            {{recipe.instructions}}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
