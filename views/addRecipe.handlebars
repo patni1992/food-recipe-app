@@ -1,0 +1,66 @@
+<div class="container space-top">
+    <div class="row">
+        <form method="POST" action="/recipes" enctype="multipart/form-data" class="col sm12 l10 offset-l1">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input required name="name" id="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea name="description" id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="password">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea" name="instructions" class="materialize-textarea"></textarea>
+                    <label for="textarea">Instructions</label>
+                </div>
+            </div>
+            <div id="inputs">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input required id="ingredient" name="ingredients[0]" type="text">
+                        <label for="ingredient">Ingredient</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <select required name="measures[0]">
+                            {{#each this.measurements}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                        <label>Measure</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input required name="amounts[0]" id="amount" type="number">
+                        <label for="amount">amount</label>
+                    </div>
+                </div>
+            </div>
+             <div style="text-align: right;">
+                <a id="addBtn" class="btn-floating btn-large waves-effect waves-light"><i
+                        class="material-icons">add</i></a>
+                <a id="removeBtn" class="btn-floating btn-large waves-effect waves-light red"><i
+                        class="material-icons">delete</i></a>
+            </div>
+            <div class="row">
+                <div class="file-field input-field s12">
+                    <div class="btn">
+                        <span>File</span>
+                        <input required type="file" name="image">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                </div>
+            </div>
+            <div class="right-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
