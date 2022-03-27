@@ -90,12 +90,36 @@ function mapRowsToNestedData(rows) {
   return recipe;
 }
 
+async function removeRecipe(id) {
+  const query = await db.query('DELETE FROM recipe WHERE id = $1;', [id]);
+
+  return query.rows;
+}
+
+async function removeRecipeIngredients(recipeId) {
+  const query = await db.query('DELETE FROM recipe_ingredient WHERE recipe_id = $1', [recipeId]);
+
+  return query;
+}
+
+async function updateRecipe(id, values) {
+  const query = await db.query(
+    'UPDATE recipe SET name=$1, description=$2, instructions=$3, image=COALESCE($4, image) WHERE id=$5 RETURNING *',
+    [...values, id]
+  );
+
+  return query.rows;
+}
+
 module.exports = {
+  getOneRecipe,
   getAllRecipes,
+  updateRecipe,
   getAllMeasures,
-  getOneRecipe, 
-  insertRecipe,
   insertIngredients,
   getIngredients,
-  insertRecipeIngredients
+  insertRecipeIngredients,
+  removeRecipeIngredients,
+  insertRecipe,
+  removeRecipe,
 };
